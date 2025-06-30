@@ -12,10 +12,11 @@ const app = express()
 
 //habilita o cors
 app.use(cors({
-  origin: 'http://localhost:5173', // permite apenas o front rodando na porta 5173
+  origin: ['http://localhost:5173', 'https://sistema-login-fullstack.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
+
 
 //habilitando o express para receber json
 app.use(express.json())
@@ -54,7 +55,7 @@ app.put('/usuarios/:id', async (req, res) => {
   try {
     const id = req.params.id
     const novoUser = await prisma.user.update({
-      where: {id},
+      where: { id },
       data: {
         email: req.body.email,
         name: req.body.name,
