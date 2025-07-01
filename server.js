@@ -12,7 +12,7 @@ const app = express()
 
 //habilita o cors
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://sistema-login-fullstack.vercel.app'],
+  origin: ['http://localhost:5173', 'https://loginusuarios.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -86,4 +86,7 @@ app.delete('/usuarios/:id', async (req, res) => {
 
 
 //escutando a porta
-app.listen(3000)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
