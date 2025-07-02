@@ -1,7 +1,5 @@
-
 import cors from 'cors';
 import express, { Request, Response } from 'express';
-
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -16,6 +14,11 @@ app.use(cors({
 
 // Permitir JSON
 app.use(express.json());
+
+// Rota raiz para teste
+app.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'API funcionando!' });
+});
 
 // ROTAS
 app.get('/usuarios', async (req: Request, res: Response) => {

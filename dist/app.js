@@ -16,6 +16,10 @@ app.use((0, cors_1.default)({
 }));
 // Permitir JSON
 app.use(express_1.default.json());
+// Rota raiz para teste
+app.get('/', (req, res) => {
+    res.json({ message: 'API funcionando!' });
+});
 // ROTAS
 app.get('/usuarios', async (req, res) => {
     try {
